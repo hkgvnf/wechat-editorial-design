@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>一封秋日来信 · 无品牌示例</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#e4e8e5;color:#234b46;font-family:"Noto Sans CJK SC","Microsoft YaHei",sans-serif}.stage{position:relative;overflow:hidden;background:#f6f2e9}h1,h2,p{margin:0}h1,h2,.serif{font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif;font-weight:400}.eyebrow{font-size:24px;letter-spacing:5px;color:#604b2c}.line{width:60px;height:1px;background:#aa9675;margin:30px 0}.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.copy{position:relative;z-index:1}#poster{width:1080px}.chapter{position:relative;padding:92px 94px}.opening{height:1160px;padding-top:112px}.opening .art{height:100%;object-fit:fill}.opening h1{font-size:86px;line-height:1.45;letter-spacing:6px;margin:116px 0 40px}.opening p{font-size:31px;line-height:1.95;max-width:690px}.letter{padding-top:80px;padding-bottom:98px;background:linear-gradient(#e1e9e5,#f6f2e9 22%)}.letter h2{font-size:53px;margin-bottom:40px}.letter p{font-size:31px;line-height:2.0;margin:28px 0}.signoff{margin-top:58px;font-size:28px}.footer{font-size:21px;letter-spacing:3px;margin-top:64px;color:#604b2c}#cover{width:900px;height:383px;padding:44px 54px}#cover .art{object-position:center 62%;object-fit:cover}#cover h1{font-size:51px;letter-spacing:4px;margin:38px 0 24px}#cover p{font-size:22px}#cover .eyebrow{font-size:16px;letter-spacing:3px}#square{width:1080px;height:1080px;padding:80px}#square .art{object-fit:fill}#square h1{font-size:84px;line-height:1.4;margin:160px 0 38px}#square p{font-size:29px;line-height:1.8}.stage{display:none}body[data-mode="poster"] #poster,body[data-mode="cover"] #cover,body[data-mode="square"] #square{display:block}
+/* Poster text stays readable when the full-width image is displayed on a phone. */
+#poster .eyebrow{font-size:34px;letter-spacing:4px}.opening{height:1160px;background:#e1e9e5}.opening .art{mask-image:linear-gradient(#000 0%,#000 68%,transparent 100%)}.opening h1{font-size:96px;margin-top:100px}.opening p,.letter p{font-size:45px;line-height:1.85}.letter h2{font-size:58px}.signoff{font-size:42px}.footer{font-size:34px;line-height:1.8;letter-spacing:1px}#cover p{font-size:29px}#cover .eyebrow{font-size:23px}#square .eyebrow{font-size:34px}#square p{font-size:43px}
+</style></head>
+<body data-mode="poster">
+<main id="poster" class="stage">
+  <section id="chapter-1" class="chapter opening">
+    <img class="art" src="scene.svg" alt="秋日山水示意图形">
+    <div class="copy"><div class="eyebrow">秋日来信</div><div class="line"></div><h1>把感谢<br>写进这一季</h1><p>致每一位用心同行的伙伴：<br>愿忙碌有所收获，<br>也愿日常有值得停留的温暖。</p></div>
+  </section>
+  <section id="chapter-2" class="chapter letter">
+    <div class="eyebrow">谢谢，一路同行</div><div class="line"></div><h2>每一份认真，都值得珍惜</h2>
+    <p>一份细致的准备，一次耐心的沟通，<br>一个按约定完成的细节。<br>许多看似平常的时刻，<br>让合作有了踏实的温度。</p>
+    <p>谢谢每一位供应商与合作伙伴。<br>愿我们继续带着这份认真，<br>把每一步走得从容、稳妥。</p>
+    <div class="signoff serif">愿你工作顺意，生活常暖。</div>
+    <div class="footer">无品牌示例 · 请替换为本次活动内容</div>
+  </section>
+</main>
+<section id="cover" class="stage"><img class="art" src="scene.svg" alt="秋日山水示意图形"><div class="copy"><div class="eyebrow">秋日来信</div><h1>把感谢写进这一季</h1><p>致每一位用心同行的伙伴</p></div></section>
+<section id="square" class="stage"><img class="art" src="scene.svg" alt="秋日山水示意图形"><div class="copy"><div class="eyebrow">秋日来信</div><div class="line"></div><h1>把感谢<br>写进这一季</h1><p>愿工作顺意，生活常暖。</p></div></section>
+<script>const mode=new URLSearchParams(location.search).get('mode');if(['poster','cover','square'].includes(mode))document.body.dataset.mode=mode;</script>
+</body></html>

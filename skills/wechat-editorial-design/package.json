@@ -1,0 +1,9 @@
+{
+  "name": "wechat-editorial-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Editorial WeChat design, brand preservation and local export helpers",
+  "dependencies": {"playwright": "^1.51.1", "sharp": "^0.34.1", "dompurify": "^3.2.6"},
+  "engines": {"node": ">=20"},
+  "license": "MIT"
+}

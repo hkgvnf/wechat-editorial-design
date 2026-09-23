@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{TITLE}} · 图文编辑</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eeeee9;color:#252d2b;font:16px/1.65 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer;background:#244e45;color:#fff;border:1px solid #244e45;padding:10px 16px;border-radius:6px;min-height:44px}button.secondary{background:#fff;color:#244e45}button:focus-visible,input:focus-visible,textarea:focus-visible,[contenteditable]:focus-visible{outline:3px solid #a46a27;outline-offset:3px}.workspace{max-width:1220px;margin:0 auto;padding:32px 24px 64px}.intro{margin-bottom:24px}.intro p{color:#52635c;margin:8px 0 0}.intro h1{font-size:25px;line-height:1.3;margin:0}.grid{display:grid;grid-template-columns:minmax(260px,340px) minmax(0,1fr);gap:32px;align-items:start}.controls{background:#fff;padding:24px;border:1px solid #d4dad4;border-radius:10px}.controls label{display:block;font-weight:600;margin:0 0 8px}.controls input,.controls textarea{width:100%;padding:10px 12px;border:1px solid #9eaaa3;border-radius:5px;background:#fff;color:#252d2b;margin-bottom:10px}.controls textarea{resize:vertical;min-height:112px}.field{margin-bottom:22px}.actions{display:flex;gap:9px;flex-wrap:wrap}.note{color:#52635c;font-size:13px;line-height:1.7;margin:18px 0 0}#status{padding:12px 0 0;min-height:40px;font-size:14px;color:#244e45;overflow-wrap:anywhere}#status[data-kind="error"]{color:#953122}.article-wrap{min-width:0}#article{background:#fff;min-height:500px;overflow-wrap:anywhere;outline-offset:5px}#article img{max-width:100%;height:auto}#article:focus{outline:2px solid #778d80}#article table{max-width:100%}.article-caption{font-size:13px;color:#52635c;margin:0 0 8px}@media(max-width:760px){.workspace{padding:24px 14px 40px}.grid{grid-template-columns:1fr;gap:24px}.controls{padding:20px}.intro h1{font-size:22px}}@media print{body{background:white}.intro,.controls,.article-caption{display:none}.workspace{padding:0;max-width:none}.grid{display:block}#article{outline:0}}
+</style>
+</head>
+<body>
+<main class="workspace">
+  <header class="intro"><h1>公众号图文编辑</h1><p>修改标题、摘要和正文，再复制或保存到本机。</p></header>
+  <div class="grid">
+    <aside class="controls" aria-label="编辑与导出">
+      <div class="field"><label for="titleInput">文章标题</label><input id="titleInput" value="{{TITLE}}"><button class="secondary" data-action="copy-title">复制标题</button></div>
+      <div class="field"><label for="summaryInput">文章摘要</label><textarea id="summaryInput">{{SUMMARY}}</textarea><button class="secondary" data-action="copy-summary">复制摘要</button></div>
+      <div class="actions"><button data-action="copy-article">复制正文</button><button class="secondary" data-action="save">保存草稿</button><button class="secondary" data-action="download">下载编辑文件</button></div>
+      <p id="status" role="status" aria-live="polite"></p>
+      <p class="note">草稿保存在此浏览器中。下载编辑文件可保留可携带的副本。</p>
+      <p class="note">复制成功表示内容已进入剪贴板。粘贴到公众号后台后，请检查图片、字体和间距；若图片未保留，请按配图顺序上传原图。</p>
+    </aside>
+    <section class="article-wrap" aria-label="正文预览"><p class="article-caption">点击正文即可编辑。编辑工具不会复制进文章。</p><div id="article" contenteditable="true" role="textbox" aria-label="文章正文" aria-multiline="true">{{ARTICLE}}</div></section>
+  </div>
+</main>
+<script id="editor-config" type="application/json">{{CONFIG}}</script>
+<script>{{PURIFIER}}</script>
+<script>{{RUNTIME}}</script>
+</body>
+</html>

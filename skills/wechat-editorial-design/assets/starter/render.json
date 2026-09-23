@@ -1,0 +1,12 @@
+{
+  "html": "design.html",
+  "outputDir": "output",
+  "background": "#f6f2e9",
+  "targets": [
+    {"name":"article-long", "selector":"#poster", "query":"?mode=poster"},
+    {"name":"cover-wide", "selector":"#cover", "query":"?mode=cover", "viewportWidth":900},
+    {"name":"cover-square", "selector":"#square", "query":"?mode=square"},
+    {"name":"sections/01-opening", "selector":"#chapter-1", "query":"?mode=poster"},
+    {"name":"sections/02-letter", "selector":"#chapter-2", "query":"?mode=poster"}
+  ]
+}

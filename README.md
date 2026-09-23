@@ -1,0 +1,77 @@
+# 公众号图文设计 Skill
+
+把品牌图文从文案、插画和排版，做到能使用的长图、封面与可编辑复制页。重点是图文自然融合、原版 Logo 保真，以及手机上清楚易读。
+
+适用于节日祝福、供应商与合作伙伴感谢信、品牌公众号专题。视觉风格、主题和语言跟随当次任务；示例的秋日主题与米白色不是固定模板。
+
+## 安装到 Codex
+
+将 `skills/wechat-editorial-design` 整个目录复制到你的 Codex 技能目录，通常是 `~/.codex/skills/`。如果设置了 `CODEX_HOME`，使用其下的 `skills/`。保留 `SKILL.md`、`agents`、`references`、`scripts` 和 `assets` 的目录关系。
+
+PowerShell 示例（在仓库目录执行；若目标已存在，先查看差异，避免覆盖自己的修改）：
+
+```powershell
+$skillHome = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex/skills' }
+$destination = Join-Path $skillHome 'wechat-editorial-design'
+if (Test-Path -LiteralPath $destination) { throw '技能已存在，请先检查差异。' }
+New-Item -ItemType Directory -Force -Path $skillHome | Out-Null
+Copy-Item -LiteralPath './skills/wechat-editorial-design' -Destination $destination -Recurse
+```
+
+在 Codex 的新会话中调用：
+
+```text
+请使用 $wechat-editorial-design，制作一篇面向供应商和合作伙伴的节日祝福公众号图文。
+使用简体中文，语气真诚，高雅且易读。严格使用我提供的透明 Logo。
+请交付标题、摘要、横版和方版封面、完整长图、正文切片，以及可编辑的一键复制 HTML。
+```
+
+如需运行辅助脚本，在安装后的技能目录执行 `npm install`，再执行 `npx playwright install chromium`。技能文档也可以配合当前环境提供的其他设计工具使用，不要求所有项目都运行这些脚本。
+
+## 先跑通无品牌示例
+
+需要 Node.js 20 或更新版本。在仓库根目录运行：
+
+```sh
+npm ci
+npx playwright install chromium
+npm run demo
+npm test
+```
+
+打开 `skills/wechat-editorial-design/assets/starter/output/article-editor.html`。同一 `output/` 目录还包含完整长图、两种封面、连续章节切片，以及导出尺寸报告。示例中的 SVG 是演示留白与导出流程的简单示意图形；正式项目应使用当次授权或生成的视觉素材。
+
+正式使用时，先把 `assets/starter/` 复制到当前任务的工作目录，再修改其中的源稿和配置；所有示例输出都落在该副本内的 `output/`，无需依赖仓库层级，也避免改动已安装的技能。
+
+```sh
+node skills/wechat-editorial-design/scripts/audit-contrast.cjs skills/wechat-editorial-design/assets/starter/render.json
+```
+
+这会把普通 HTML 文字与实际背景进行采样比较。报告标明弱对比与无法检测的情况；它不是完整无障碍认证。图片里的字、Logo、字体是否适合手机阅读，仍需查看真实成品。
+
+## 内含什么
+
+| 文件 | 用途 |
+| --- | --- |
+| [SKILL.md](skills/wechat-editorial-design/SKILL.md) | 触发范围、设计流程与交付检查 |
+| [设计与品牌](skills/wechat-editorial-design/references/design-and-brand.md) | 图文融合、透明 Logo、留白与文字可读性 |
+| [公众号交付](skills/wechat-editorial-design/references/wechat-delivery.md) | 可编辑正文、长图、复制页、草稿与平台限制 |
+| [脚本说明](skills/wechat-editorial-design/references/scripts.md) | 参数、目录、运行方式与输出 |
+| `render-design.cjs` | 从本地 HTML 导出指定区域的 PNG / JPG |
+| `inspect-logo.cjs` | 只读统计 alpha、白色像素和内容边界 |
+| `audit-contrast.cjs` | 最终背景上的普通 HTML 文字对比度筛查 |
+| `build-editor.cjs` | 嵌入图片，生成可编辑、可复制、可保存的单文件页面 |
+
+## 使用边界
+
+- 仓库只含通用方法、代码和无品牌示例，不含客户 Logo、真实成品或账号凭据。MIT 许可覆盖本仓库内容，不授予任何第三方品牌资产的使用权。
+- 辅助脚本接收你信任的本地 HTML 和素材，不是用于安全执行未知网页的沙箱，也不是 HTML 消毒工具。
+- 复制页将 HTML 和纯文本写入剪贴板，图片以 data URI 嵌入。微信后台可能移除图片或样式；请按配图顺序补传原图，并在后台和手机预览。仓库不登录或自动发布到公众号。
+- 平台规范可能变化。示例的 `900×383` 与 `1080×1080` 是可改的导出配置；需要最新规则时，应查看官方说明或当前后台要求。
+- 草稿按活动键隔离；更换配图后递增 `assetVersion`，保持 `data-asset-id`，可更新图片同时保留文字修改。下载副本使用独立草稿键。
+
+## 验证
+
+`npm test` 覆盖图片透明度检查、指定尺寸导出、强弱文字对比识别、编辑页小屏布局、富文本与纯文本剪贴板、复制降级、草稿恢复、换图保留文字，以及下载副本的草稿隔离。字体和截图外观仍会随系统字体而变；正式交付前应人工查看所有图片。
+
+仓库使用 MIT License。
