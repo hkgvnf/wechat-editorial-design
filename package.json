@@ -5,7 +5,7 @@
   "workspaces": ["skills/wechat-editorial-design"],
   "scripts": {
     "demo": "node skills/wechat-editorial-design/scripts/render-design.cjs skills/wechat-editorial-design/assets/starter/render.json && node skills/wechat-editorial-design/scripts/build-editor.cjs skills/wechat-editorial-design/assets/starter/editor.json",
-    "test": "node --test tests/workflow.test.cjs"
+    "test": "node --test tests/workflow.test.cjs tests/artwork.test.cjs"
   },
   "engines": {"node": ">=20"}
 }

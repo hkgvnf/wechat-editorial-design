@@ -4,6 +4,8 @@
 
 适用于节日祝福、供应商与合作伙伴感谢信、品牌公众号专题。视觉风格、主题和语言跟随当次任务；示例的秋日主题与米白色不是固定模板。
 
+多章节配图先确定各自的叙事作用，再用统一画风连接；同一场景换裁切不自动算作新配图。融合检查覆盖最终底色上的图片四边、章节交界和手机缩览，区分真实透明素材与不透明底片；文字对比度合格不能代替这些视觉检查。
+
 ## 安装到 Codex
 
 将 `skills/wechat-editorial-design` 整个目录复制到你的 Codex 技能目录，通常是 `~/.codex/skills/`。如果设置了 `CODEX_HOME`，使用其下的 `skills/`。保留 `SKILL.md`、`agents`、`references`、`scripts` 和 `assets` 的目录关系。
@@ -55,11 +57,14 @@ node skills/wechat-editorial-design/scripts/audit-contrast.cjs skills/wechat-edi
 | --- | --- |
 | [SKILL.md](skills/wechat-editorial-design/SKILL.md) | 触发范围、设计流程与交付检查 |
 | [设计与品牌](skills/wechat-editorial-design/references/design-and-brand.md) | 图文融合、透明 Logo、留白与文字可读性 |
+| [配图连续性](skills/wechat-editorial-design/references/artwork-continuity.md) | 章节配图分工、避免重复场景、透明素材与背景接缝复核 |
+| [配图检查](skills/wechat-editorial-design/references/artwork-audit.md) | 素材复用、透明像素与边缘色差报告的用法及局限 |
 | [公众号交付](skills/wechat-editorial-design/references/wechat-delivery.md) | 可编辑正文、长图、复制页、草稿与平台限制 |
 | [脚本说明](skills/wechat-editorial-design/references/scripts.md) | 参数、目录、运行方式与输出 |
 | `render-design.cjs` | 从本地 HTML 导出指定区域的 PNG / JPG |
 | `inspect-logo.cjs` | 只读统计 alpha、白色像素和内容边界 |
 | `audit-contrast.cjs` | 最终背景上的普通 HTML 文字对比度筛查 |
+| `audit-artwork.cjs` | 单篇正文内的素材去重、透明统计与源图边缘检查 |
 | `build-editor.cjs` | 嵌入图片，生成可编辑、可复制、可保存的单文件页面 |
 
 ## 使用边界
@@ -72,6 +77,6 @@ node skills/wechat-editorial-design/scripts/audit-contrast.cjs skills/wechat-edi
 
 ## 验证
 
-`npm test` 覆盖图片透明度检查、指定尺寸导出、强弱文字对比识别、编辑页小屏布局、富文本与纯文本剪贴板、复制降级、草稿恢复、换图保留文字，以及下载副本的草稿隔离。字体和截图外观仍会随系统字体而变；正式交付前应人工查看所有图片。
+`npm test` 覆盖图片透明度检查、指定尺寸导出、强弱文字对比识别、素材字节去重、Logo 与隐藏图片排除、合理重复的说明记录、透明素材和边缘色差报告、编辑页小屏布局、富文本与纯文本剪贴板、复制降级、草稿恢复、换图保留文字，以及下载副本的草稿隔离。字体和截图外观仍会随系统字体而变；正式交付前应人工查看所有图片与章节衔接。
 
 仓库使用 MIT License。
