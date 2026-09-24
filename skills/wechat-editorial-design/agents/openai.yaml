@@ -1,4 +1,4 @@
 interface:
   display_name: "公众号图文设计"
-  short_description: "制作高雅融合的公众号图文，保真处理品牌素材，交付长图、封面与可编辑复制页"
-  default_prompt: "请使用 $wechat-editorial-design，为我的品牌制作图文融合、清晰易读的公众号文章，附标题、封面、长图和可编辑复制页。"
+  short_description: "按需制作活动报道、公司动态与节日公众号图文，融合照片和品牌素材，交付长图、封面与复制页"
+  default_prompt: "请使用 $wechat-editorial-design，根据我的活动资料或公司动态，选择合适的文案结构与图文设计，并按需要交付公众号文章、长图、封面或可编辑复制页。"

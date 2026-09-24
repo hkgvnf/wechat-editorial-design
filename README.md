@@ -1,8 +1,18 @@
 # 公众号图文设计 Skill - By Jason Optio
 
-把品牌图文从文案、插画和排版，做到能使用的长图、封面与可编辑复制页。重点是图文自然融合、原版 Logo 保真，以及手机上清楚易读。
+按实际内容需求，将文案、现场照片、品牌素材或插画组织成能使用的公众号文章、活动长图、封面与可编辑复制页。重点是事实清楚、图文自然融合、原版 Logo 保真，以及手机上易读。
 
-适用于节日祝福、供应商与合作伙伴感谢信、品牌公众号专题。视觉风格、主题和语言跟随当次任务；示例的秋日主题与米白色不是固定模板。
+适用于活动预告和邀请、参会与演讲报道、活动回顾、公司动态、品牌专题及节日祝福。先判断读者要了解什么，再选择结构与视觉；语言、字体、配色和交付形式跟随当次任务。
+
+| 内容类型 | 内容重点 | 常用素材 |
+| --- | --- | --- |
+| 活动预告／邀请 | 时间地点、参与身份、活动看点，按需附报名信息 | 已确认议程、活动主视觉、人物资料 |
+| 人物参会／演讲报道 | 参与背景、发言要点、交流内容 | 真实人物与现场照片、演讲稿 |
+| 活动回顾 | 已发生的亮点、现场与有依据的成果 | 现场全景、交流照片、活动记录 |
+| 公司动态 | 发生了什么、影响谁、有哪些已确认变化 | 正式资料、产品或服务截图、团队照片 |
+| 节日祝福／感谢 | 对受众的感谢与祝愿 | 品牌原件、合适的节日插画 |
+
+活动报道优先使用真实资料和照片；公司动态围绕已确认进展展开。完整照片可用构图、图注和留白融入页面，不要求每张图片都抠成透明，也不默认使用节日装饰或营销结尾。
 
 多章节配图先确定各自的叙事作用，再用统一画风连接；同一场景换裁切不自动算作新配图。融合检查覆盖最终底色上的图片四边、章节交界和手机缩览，区分真实透明素材与不透明底片；文字对比度合格不能代替这些视觉检查。
 
@@ -23,10 +33,12 @@ Copy-Item -LiteralPath './skills/wechat-editorial-design' -Destination $destinat
 在 Codex 的新会话中调用：
 
 ```text
-请使用 $wechat-editorial-design，制作一篇面向供应商和合作伙伴的节日祝福公众号图文。
-使用简体中文，语气真诚，高雅且易读。严格使用我提供的透明 Logo。
-请交付标题、摘要、横版和方版封面、完整长图、正文切片，以及可编辑的一键复制 HTML。
+请使用 $wechat-editorial-design，根据我提供的活动资料、演讲稿和现场照片，
+制作人物参会回顾公众号图文。使用简体中文，保留真实现场与原版 Logo，
+按内容选择高雅、清楚的排版。请交付标题、摘要、封面、长图和可编辑复制页。
 ```
+
+也可以直接说「根据这份已确认的公司新闻稿做公司动态长图」或「按活动议程做预告，只要长图和封面」。技能会按需求选择结构与输出，不强制每次交付整套文件。详细判断见 [内容类型与叙事](skills/wechat-editorial-design/references/content-types.md)。
 
 如需运行辅助脚本，在安装后的技能目录执行 `npm install`，再执行 `npx playwright install chromium`。技能文档也可以配合当前环境提供的其他设计工具使用，不要求所有项目都运行这些脚本。
 
@@ -41,7 +53,7 @@ npm run demo
 npm test
 ```
 
-打开 `skills/wechat-editorial-design/assets/starter/output/article-editor.html`。同一 `output/` 目录还包含完整长图、两种封面、连续章节切片，以及导出尺寸报告。示例中的 SVG 是演示留白与导出流程的简单示意图形；正式项目应使用当次授权或生成的视觉素材。
+打开 `skills/wechat-editorial-design/assets/starter/output/article-editor.html`。同一 `output/` 目录还包含完整长图、两种封面、连续章节切片，以及导出尺寸报告。秋日来信和其中的 SVG 只演示排版与导出机制；制作活动或公司动态时应替换内容结构和素材，示例的主题与风格不是默认模板。
 
 正式使用时，先把 `assets/starter/` 复制到当前任务的工作目录，再修改其中的源稿和配置；所有示例输出都落在该副本内的 `output/`，无需依赖仓库层级，也避免改动已安装的技能。
 
@@ -56,6 +68,7 @@ node skills/wechat-editorial-design/scripts/audit-contrast.cjs skills/wechat-edi
 | 文件 | 用途 |
 | --- | --- |
 | [SKILL.md](skills/wechat-editorial-design/SKILL.md) | 触发范围、设计流程与交付检查 |
+| [内容类型与叙事](skills/wechat-editorial-design/references/content-types.md) | 活动、人物报道、公司动态与节日的结构选择、事实核验和配图 |
 | [设计与品牌](skills/wechat-editorial-design/references/design-and-brand.md) | 图文融合、透明 Logo、留白与文字可读性 |
 | [配图连续性](skills/wechat-editorial-design/references/artwork-continuity.md) | 章节配图分工、避免重复场景、透明素材与背景接缝复核 |
 | [配图检查](skills/wechat-editorial-design/references/artwork-audit.md) | 素材复用、透明像素与边缘色差报告的用法及局限 |
